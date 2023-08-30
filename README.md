@@ -51,7 +51,7 @@ Before running the scripts, make sure you have the following:
 
     ```bash
     git clone https://github.com/lokeshdangii/DBGenPopAutomator
-    cd your-repository
+    cd DBGenPopAutomator
     ```
 
 2. Install project dependencies from `requirements.txt`:
