@@ -1,5 +1,5 @@
 # Database Generation and Population Automator
-**DBGenPopAutomator:** A Python Module for automating the creation and population of car showroom database with realistic sample data.
+**DBGenPopAutomator:** A Python Module for automating the creation and population of a car showroom database with realistic sample data.
 
 ## Overview
 
@@ -34,7 +34,7 @@ The project consists of the following components:
 
 2. **Table Creation:** Each individual script corresponds to a specific table. These scripts create the necessary tables, defining primary keys, foreign keys, and attributes for each table.
 
-3. **Data Population:** The same individual scripts handle data population for each table. The Faker library is used to generate random but realistic data for different attributes.
+3. **Data Population:** The same individual scripts handle the data population for each table. The Faker library is used to generate random but realistic data for different attributes.
 
 4. **Foreign Key Constraints:** The scripts ensure that foreign key references are maintained, ensuring data integrity across tables.
 
@@ -76,7 +76,7 @@ This script automatically creates database tables and populates them with data u
 
 ## DB Schema
 
-Here is link to my database schema.You can view it from [here](https://docs.google.com/spreadsheets/d/142qSCSo7DvzJm0dkXzN0Z9ECH6Y3db7tqqDw3qo8G8s/edit#gid=0).
+Here is a link to my database schema. View it from [here](https://docs.google.com/spreadsheets/d/142qSCSo7DvzJm0dkXzN0Z9ECH6Y3db7tqqDw3qo8G8s/edit#gid=0).
 
 ## Conclusion
 
