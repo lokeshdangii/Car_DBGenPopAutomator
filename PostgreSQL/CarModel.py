@@ -1,4 +1,4 @@
-import mysql.connector
+import psycopg2
 from faker import Faker
 import random
 
@@ -15,7 +15,7 @@ def create_car_model(db):
 
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS CarModel (
-            ModelID INT AUTO_INCREMENT PRIMARY KEY,
+            ModelID SERIAL PRIMARY KEY,
             ModelName VARCHAR(100),
             CategoryID INT,
             EngineID INT,
@@ -32,13 +32,12 @@ def create_car_model(db):
     car_models = []
     fake = Faker()
     for model_name in vehicle_models:
-        car_models.append((None, model_name, random.randint(1, 5), random.randint(1, 4), fake.paragraph()))
+        car_models.append((model_name, random.randint(1, 5), random.randint(1, 4), fake.paragraph()))
 
-    insert_query = "INSERT INTO CarModel (ModelID, ModelName, CategoryID, EngineID, ModelSpecifications) VALUES (%s, %s, %s, %s, %s)"
+    insert_query = "INSERT INTO CarModel (ModelName, CategoryID, EngineID, ModelSpecifications) VALUES (%s, %s, %s, %s)"
     cursor.executemany(insert_query, car_models)
 
     db.commit()
     cursor.close()
-    
 
     print("CarModel table created and populated successfully.")

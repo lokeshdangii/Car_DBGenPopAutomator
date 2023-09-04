@@ -1,4 +1,4 @@
-import mysql.connector
+import psycopg2
 from faker import Faker
 
 def create_sale(db):
@@ -10,7 +10,7 @@ def create_sale(db):
     # Create Sale table if not exists
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS Sale (
-            SaleID INT AUTO_INCREMENT PRIMARY KEY,
+            SaleID SERIAL PRIMARY KEY,
             CustomerID INT,
             CarID INT,
             SalespersonID INT,
@@ -35,10 +35,10 @@ def create_sale(db):
     # Populate Sale table
     sale_data = []
     for i in range(1, 101):
-        sale_data.append((None, fake.random_int(min=1, max=50), fake.random_int(min=1, max=100), 
+        sale_data.append((fake.random_int(min=1, max=50), fake.random_int(min=1, max=100), 
                         fake.random_int(min=1, max=20), fake.random_int(min=1, max=100), 
                         fake.future_date(end_date='+1y'), fake.pydecimal(left_digits=5, right_digits=2)))
-    insert_sale_query = "INSERT INTO Sale (SaleID, CustomerID, CarID, SalespersonID, PaymentID, SaleDate, SalePrice) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+    insert_sale_query = "INSERT INTO Sale (CustomerID, CarID, SalespersonID, PaymentID, SaleDate, SalePrice) VALUES (%s, %s, %s, %s, %s, %s)"
     cursor.executemany(insert_sale_query, sale_data)
 
     db.commit()

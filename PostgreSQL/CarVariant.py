@@ -1,9 +1,9 @@
-import mysql.connector
+import psycopg2
 import random
 
 def create_car_variant(db):
 
-    cursor = db.cursor()   #execute cursor
+    cursor = db.cursor()
 
     # List of predefined vehicle models and variants
     vehicle_models = [
@@ -18,7 +18,7 @@ def create_car_variant(db):
 
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS CarVariant (
-            VariantID INT AUTO_INCREMENT PRIMARY KEY,
+            VariantID SERIAL PRIMARY KEY,
             ModelID INT,
             ColorID INT,
             CategoryID INT,
@@ -40,15 +40,14 @@ def create_car_variant(db):
 
     car_variants = []
     for variant_name in vehicle_variants:
-        car_variants.append((None, random.randint(1, len(vehicle_models)), random.randint(1, 10), random.randint(1, 5),
+        car_variants.append((random.randint(1, len(vehicle_models)), random.randint(1, 10), random.randint(1, 5),
                             variant_name, random.uniform(10, 50), random.choice(["Gasoline", "Diesel", "Electric", "Hybrid"]),
                             random.uniform(15000, 80000)))
 
-    insert_query = "INSERT INTO CarVariant (VariantID, ModelID, ColorID, CategoryID, VariantName, Mileage, EngineType, Price) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+    insert_query = "INSERT INTO CarVariant (ModelID, ColorID, CategoryID, VariantName, Mileage, EngineType, Price) VALUES (%s, %s, %s, %s, %s, %s, %s)"
     cursor.executemany(insert_query, car_variants)
 
     db.commit()
     cursor.close()
-    
 
     print("CarVariant table created and populated successfully.")
