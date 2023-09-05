@@ -20,16 +20,26 @@ def create_car(db):
             Mileage FLOAT,
             YearOfManufacture INT,
             BrandCompany VARCHAR(100),
-            FOREIGN KEY (VariantID) REFERENCES CarVariant(VariantID),
-            FOREIGN KEY (CategoryID) REFERENCES CarCategory(CategoryID),
-            FOREIGN KEY (EngineID) REFERENCES CarEngine(EngineID),
-            FOREIGN KEY (ColorID) REFERENCES CarColor(ColorID),
+            FOREIGN KEY (VariantID) REFERENCES CarVariant(VariantID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE,
+            FOREIGN KEY (CategoryID) REFERENCES CarCategory(CategoryID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE,
+            FOREIGN KEY (EngineID) REFERENCES CarEngine(EngineID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE,
+            FOREIGN KEY (ColorID) REFERENCES CarColor(ColorID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE,
             FOREIGN KEY (ModelID) REFERENCES CarModel(ModelID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE
         )
     """)
 
     car_data = []
-    for _ in range(151):
+    for _ in range(100):
         car_data.append((None, random.randint(1, 8), random.randint(1, 5), random.randint(1, 4),
                         random.randint(1, 10), random.randint(1, 15), fake.unique.random_int(min=10000000000000000, max=99999999999999999),
                         random.uniform(100, 100000), random.randint(2000, 2023), fake.company()))
