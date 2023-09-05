@@ -16,18 +16,24 @@ def create_finance(db):
             InstallmentID INT,
             FinancingTerm INT,
             InterestRate DECIMAL(5, 2),
-            FOREIGN KEY (SaleID) REFERENCES Sale(SaleID),
-            FOREIGN KEY (PaymentID) REFERENCES Payment(PaymentID),
+            FOREIGN KEY (SaleID) REFERENCES Sale(SaleID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE,
+            FOREIGN KEY (PaymentID) REFERENCES Payment(PaymentID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE,
             FOREIGN KEY (InstallmentID) REFERENCES Installment(InstallmentID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE
         )
     """)
 
     # Populate Finance table
     finance_data = []
-    for i in range(1, 101):
+    for i in range(1, 100):
         finance_data.append((None, fake.random_int(min=1, max=100), fake.random_int(min=1, max=100), 
                             fake.random_int(min=1, max=100), fake.random_int(min=12, max=72), 
-                            fake.pydecimal(left_digits=3, right_digits=2)))
+                            fake.pydecimal(left_digits=1, right_digits=1)))
     insert_finance_query = "INSERT INTO Finance (FinanceID, SaleID, PaymentID, InstallmentID, FinancingTerm, InterestRate) VALUES (%s, %s, %s, %s, %s, %s)"
     cursor.executemany(insert_finance_query, finance_data)
 
