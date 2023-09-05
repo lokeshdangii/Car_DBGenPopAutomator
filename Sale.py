@@ -16,20 +16,28 @@ def create_sale(db):
             SalespersonID INT,
             PaymentID INT,
             SaleDate DATE,
-            SalePrice DECIMAL(10, 2),
-            FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID),
-            FOREIGN KEY (CarID) REFERENCES Car(CarID),
-            FOREIGN KEY (SalespersonID) REFERENCES SalesPerson(SalesPersonID),
+            SalePrice INT,
+            FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE,
+            FOREIGN KEY (CarID) REFERENCES Car(CarID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE,
+            FOREIGN KEY (SalespersonID) REFERENCES SalesPerson(SalesPersonID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE,
             FOREIGN KEY (PaymentID) REFERENCES Payment(PaymentID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE
         )
     """)
 
     # Populate Sale table
     sale_data = []
-    for i in range(1, 101):
+    for i in range(1, 100):
         sale_data.append((None, fake.random_int(min=1, max=50), fake.random_int(min=1, max=100), 
                         fake.random_int(min=1, max=20), fake.random_int(min=1, max=100), 
-                        fake.future_date(end_date='+1y'), fake.pydecimal(left_digits=5, right_digits=2)))
+                        fake.future_date(end_date='+1y'), fake.random_int(min = 500000,max = 2000000)))
     insert_sale_query = "INSERT INTO Sale (SaleID, CustomerID, CarID, SalespersonID, PaymentID, SaleDate, SalePrice) VALUES (%s, %s, %s, %s, %s, %s, %s)"
     cursor.executemany(insert_sale_query, sale_data)
 
