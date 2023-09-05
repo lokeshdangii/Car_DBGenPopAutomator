@@ -25,7 +25,7 @@ def create_salesperson(db):
     """)
 
     salesperson_data = []
-    for i in range(1, 36):
+    for i in range(1, 21):
         salesperson_data.append((i, fake.name(), fake.random_element(["Male", "Female"]), fake.date_of_birth(minimum_age=25, maximum_age=65),
                                  fake.phone_number()[:11], fake.email(), fake.street_address(), fake.secondary_address(), fake.city(),
                                  fake.state(), fake.zipcode()))
