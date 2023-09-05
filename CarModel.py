@@ -20,8 +20,12 @@ def create_car_model(db):
             CategoryID INT,
             EngineID INT,
             ModelSpecifications TEXT,
-            FOREIGN KEY (CategoryID) REFERENCES CarCategory(CategoryID),
+            FOREIGN KEY (CategoryID) REFERENCES CarCategory(CategoryID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE,
             FOREIGN KEY (EngineID) REFERENCES CarEngine(EngineID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE
         )
     """)
 
