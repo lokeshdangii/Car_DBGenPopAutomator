@@ -24,7 +24,7 @@ def create_customer(db):
     """)
 
     customer_data = []
-    for _ in range(101):
+    for _ in range(50):
         customer_data.append((None, fake.name(), fake.random_element(["Male", "Female"]), fake.date_of_birth(minimum_age=18, maximum_age=65),
                               fake.phone_number()[:11], fake.email(), fake.street_address(), fake.secondary_address(), fake.city(),
                               fake.state(), fake.zipcode()))
