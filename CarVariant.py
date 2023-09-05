@@ -26,9 +26,15 @@ def create_car_variant(db):
             Mileage FLOAT,
             EngineType VARCHAR(50),
             Price DECIMAL(10, 2),
-            FOREIGN KEY (ModelID) REFERENCES CarModel(ModelID),
-            FOREIGN KEY (ColorID) REFERENCES CarColor(ColorID),
+            FOREIGN KEY (ModelID) REFERENCES CarModel(ModelID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE,
+            FOREIGN KEY (ColorID) REFERENCES CarColor(ColorID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE,
             FOREIGN KEY (CategoryID) REFERENCES CarCategory(CategoryID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE
         )
     """)
 
