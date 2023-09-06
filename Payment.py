@@ -40,5 +40,4 @@ def create_payment(db):
     db.commit()
     cursor.close()
     
-
     print("Payment table created and populated successfully.")
