@@ -10,7 +10,7 @@ def create_salesperson(db):
 
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS SalesPerson (
-            SalesPersonID INT NOT NULL PRIMARY KEY,
+            SalesPersonID INT AUTO_INCREMENT PRIMARY KEY,
             SP_Name VARCHAR(50),
             Gender VARCHAR(10) NOT NULL,
             DateOfBirth DATE NOT NULL,
