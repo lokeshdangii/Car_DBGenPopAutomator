@@ -42,7 +42,7 @@ def create_car(db):
     for _ in range(100):
         car_data.append((None, random.randint(1, 8), random.randint(1, 5), random.randint(1, 4),
                         random.randint(1, 10), random.randint(1, 15), fake.unique.random_int(min=10000000000000000, max=99999999999999999),
-                        random.uniform(100, 100000), random.randint(2000, 2023), fake.company()))
+                        round(random.uniform(12.0, 25.0), 2), random.randint(2000, 2023), "Maruti Suzuki"))
 
     insert_query = "INSERT INTO Car (CarID, VariantID, CategoryID, EngineID, ColorID, ModelID, VIN, Mileage, YearOfManufacture, BrandCompany) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
     cursor.executemany(insert_query, car_data)
