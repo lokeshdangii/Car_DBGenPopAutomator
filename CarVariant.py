@@ -7,14 +7,12 @@ def create_car_variant(db):
 
     # List of predefined vehicle models and variants
     vehicle_models = [
-        "Toyota Corolla", "Honda Civic", "Ford Mustang", "Chevrolet Camaro", "Volkswagen Golf",
-        "BMW 3 Series", "Nissan Altima", "Mercedes-Benz C-Class", "Jeep Wrangler", "Subaru Outback",
-        "Tesla Model S", "Kia Sportage", "Hyundai Elantra", "Mazda CX-5", "Audi A4"
+        "Alto K10","Celerio","Ignis","Swift","Baleno","Dzire","Ciaz","Ertiga","XL6","Brezza","Grand Vitara","Fronx", "Jimny","Alto 800","Wagon R","S-Presso"
     ]
 
     vehicle_variants = [
-        "Standard", "Deluxe", "Premium", "Limited", "Sport", "Eco", "Touring", "Tech"
-    ]
+        "LXI","VXI","ZXI","Sigma","Delta","Zeta","Alpha","AMT","Hybrid","CNG","Tour"
+        ]
 
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS CarVariant (
@@ -41,7 +39,7 @@ def create_car_variant(db):
     car_variants = []
     for variant_name in vehicle_variants:
         car_variants.append((None, random.randint(1, len(vehicle_models)), random.randint(1, 10), random.randint(1, 5),
-                            variant_name, random.uniform(10, 50), random.choice(["Gasoline", "Diesel", "Electric", "Hybrid"]),
+                            variant_name, random.uniform(10, 50), random.choice(["CNG", "Diesel", "Petrol", "Hybrid"]),
                             random.uniform(15000, 80000)))
 
     insert_query = "INSERT INTO CarVariant (VariantID, ModelID, ColorID, CategoryID, VariantName, Mileage, EngineType, Price) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
