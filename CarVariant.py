@@ -22,7 +22,6 @@ def create_car_variant(db):
             CategoryID INT,
             VariantName VARCHAR(100),
             Mileage FLOAT,
-            EngineType VARCHAR(50),
             Price DECIMAL(10, 2),
             FOREIGN KEY (ModelID) REFERENCES CarModel(ModelID)
             ON UPDATE CASCADE
@@ -39,10 +38,10 @@ def create_car_variant(db):
     car_variants = []
     for variant_name in vehicle_variants:
         car_variants.append((None, random.randint(1, len(vehicle_models)), random.randint(1, 10), random.randint(1, 5),
-                            variant_name, random.uniform(10, 50), random.choice(["CNG", "Diesel", "Petrol", "Hybrid"]),
-                            random.uniform(15000, 80000)))
+                            variant_name, random.uniform(10, 50),
+                            random.uniform(550000, 2000000)))
 
-    insert_query = "INSERT INTO CarVariant (VariantID, ModelID, ColorID, CategoryID, VariantName, Mileage, EngineType, Price) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+    insert_query = "INSERT INTO CarVariant (VariantID, ModelID, ColorID, CategoryID, VariantName, Mileage,Price) VALUES (%s, %s, %s, %s, %s, %s, %s)"
     cursor.executemany(insert_query, car_variants)
 
     db.commit()
