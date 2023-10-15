@@ -4,10 +4,10 @@ def create_car_engine(db):
     cursor = db.cursor()
 
     car_engines = [
-        ("CNG"),
-        ("Diesel"),
-        ("Petrol"),
-        ("Hybrid")
+        ("CNG",),
+        ("Diesel",),
+        ("Petrol",),
+        ("Electric",)
     ]
 
     cursor.execute("""
