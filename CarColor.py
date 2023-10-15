@@ -5,16 +5,16 @@ def create_car_color(db):
     cursor = db.cursor()
 
     car_colors = [
-        ("White"),
-        ("Black"),
-        ("Silver"),
-        ("Gray"),
-        ("Red"),
-        ("Blue"),
-        ("Green"),
-        ("Brown"),
-        ("Yellow"),
-        ("Orange")
+        ("White",),
+        ("Black",),
+        ("Silver",),
+        ("Gray",),
+        ("Red",),
+        ("Blue",),
+        ("Green",),
+        ("Brown",),
+        ("Yellow",),
+        ("Orange",)
     ]
 
     cursor.execute("""
