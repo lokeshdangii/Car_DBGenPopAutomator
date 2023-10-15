@@ -13,7 +13,7 @@ def create_car_engine(db):
 
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS CarEngine (
-            EngineID INT PRIMARY KEY,
+            EngineID INT AUTO_INCREMENT PRIMARY KEY,
             EngineName VARCHAR(100)
         )
     """)
