@@ -11,11 +11,11 @@ def create_car_category(db):
     """)
 
     car_categories = [
-        ("SUV"),
-        ("Sedan"),
-        ("Hatchback"),
-        ("Convertible"),
-        ("Sport")
+        ("SUV",),
+        ("Sedan",),
+        ("Hatchback",),
+        ("Convertible",),
+        ("Sport",)
     ]
 
     insert_query = "INSERT INTO CarCategory (CategoryName) VALUES (%s)"
