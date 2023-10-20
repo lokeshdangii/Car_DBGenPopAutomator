@@ -10,9 +10,13 @@ def create_car_variant(db):
         "Alto K10","Celerio","Ignis","Swift","Baleno","Dzire","Ciaz","Ertiga","XL6","Brezza","Grand Vitara","Fronx", "Jimny","Alto 800","Wagon R","S-Presso"
     ]
 
+    # vehicle_models = [
+    #     "Ignis","Baleno","Ciaz","XL6","Grand Vitara","Fronx","Jimny", "Invicto"
+    #     ]
+
     vehicle_variants = [
-        "LXI","VXI","ZXI","Sigma","Delta","Zeta","Alpha","AMT","Hybrid","CNG","Tour"
-        ]
+            "Sigma","Delta","Delta AT","Zeta","Zeta AT","Alpha","Alpha AT","Zeta+"
+            ]
 
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS CarVariant (
