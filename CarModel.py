@@ -8,7 +8,8 @@ def create_car_model(db):
 
     # List of predefined vehicle models
     vehicle_models = [
-        "Alto K10","Celerio","Ignis","Swift","Baleno","Dzire","Ciaz","Ertiga","XL6","Brezza","Grand Vitara","Fronx", "Jimny","Alto 800","Wagon R","S-Presso"]
+        "Alto K10","Celerio","Ignis","Swift","Baleno","Dzire","Ciaz","Ertiga","XL6","Brezza","Grand Vitara","Fronx", "Jimny","Alto 800","Wagon R","S-Presso"
+    ]
 
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS CarModel (
