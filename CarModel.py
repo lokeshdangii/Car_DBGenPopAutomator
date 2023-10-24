@@ -30,7 +30,7 @@ def create_car_model(db):
     car_models = []
     fake = Faker()
     for model_name in vehicle_models:
-        car_models.append((None, model_name, random.randint(1, 5), random.randint(1, 4), fake.paragraph()))
+        car_models.append((None, model_name, random.randint(1, 5), random.randint(1, 4), fake.sentence()))
 
     insert_query = "INSERT INTO CarModel (ModelID, ModelName, CategoryID, EngineID, ModelSpecifications) VALUES (%s, %s, %s, %s, %s)"
     cursor.executemany(insert_query, car_models)
