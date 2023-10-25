@@ -12,6 +12,7 @@ from Installment import create_installment
 from Payment import create_payment
 from Sale import create_sale
 from Finance import create_finance
+from User import create_user
 
 # Function to create and return a database connection
 def create_database_connection(host, user, password, database_name):
@@ -63,6 +64,7 @@ def create_database():
     create_payment(db)
     create_sale(db)
     create_finance(db)
+    create_user(db)
 
     # close the connection
     cursor.close()
